@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: peter
+ * Author: Peter Stasyuk
+ * e-mail: petro.stasuk.990@gmail.com
  * Date: 11.12.14
  * Time: 11:06
  */
@@ -38,9 +38,7 @@ class YiiBootstrapDualListBoxWidget extends CWidget
 
     public function run()
     {
-        if (!isset($this->htmlOptions['multiple']) || $this->htmlOptions['multiple'] === false) {
-            $this->htmlOptions['multiple'] = true;
-        }
+        $this->htmlOptions['multiple'] = true;
         if ($this->model !== null) {
             echo CHtml::activeDropDownList($this->model, $this->name, $this->data, $this->htmlOptions);
         } else {
