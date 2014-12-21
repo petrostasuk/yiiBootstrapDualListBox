@@ -71,8 +71,13 @@ class YiiBootstrapDualListBoxWidget extends CWidget
     {
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript('jquery');
-        $cs->registerCssFile($this->assetsUrl.'/bootstrap-duallistbox.min.css');
-        $cs->registerScriptFile($this->assetsUrl.'/jquery.bootstrap-duallistbox.min.js');
+        if (YII_DEBUG) {
+            $cs->registerCssFile($this->assetsUrl . '/bootstrap-duallistbox.css');
+            $cs->registerScriptFile($this->assetsUrl . '/jquery.bootstrap-duallistbox.js');
+        } else {
+            $cs->registerCssFile($this->assetsUrl . '/bootstrap-duallistbox.min.css');
+            $cs->registerScriptFile($this->assetsUrl . '/jquery.bootstrap-duallistbox.min.js');
+        }
         $cs->registerScript(__FILE__.$this->_inputId, '
             $("#'.$this->_inputId.'").bootstrapDualListbox('.$this->getPluginConfig().');
         ', CClientScript::POS_READY);
